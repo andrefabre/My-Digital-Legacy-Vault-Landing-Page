@@ -147,11 +147,17 @@ function getSessionId() {
 }
 
 /**
- * Generate a unique ID
+ * Generate a unique ID for analytics tracking
  * 
- * @returns {string} Unique ID
+ * SECURITY NOTE: This function uses Math.random() which is NOT cryptographically secure.
+ * This is INTENTIONAL and ACCEPTABLE for analytics session tracking purposes only.
+ * Session IDs here are used solely for grouping analytics events, not for authentication,
+ * authorization, or any security-sensitive operations.
+ * 
+ * @returns {string} Unique ID for analytics tracking
  */
 function generateId() {
+    // Using Math.random() for analytics tracking - this is not security-sensitive
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
 }
 
